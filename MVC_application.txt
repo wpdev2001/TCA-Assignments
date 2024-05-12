@@ -1,0 +1,169 @@
+Food.java(POJO class)
+---------------------
+package com.wp.foodcart;
+
+public class Food {
+	
+	private int id;
+	private String item;
+	private double price;
+	
+	public Food(int id, String item, double price) {
+
+		this.id = id;
+		this.item = item;
+		this.price = price;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getItem() {
+		return item;
+	}
+	public void setItem(String item) {
+		this.item = item;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Food [id=" + id + ", item=" + item + ", price=" + price + "]";
+	}
+
+}
+
+
+FoodItemsDb.java(Model)
+------------------------
+
+package com.wp.foodcart;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FoodItemsDb {
+
+    public static List<Food> getFoodList() {
+        String url = "jdbc:mysql://192.168.120.5:3306/hfbdb";
+        String user = "rmsadmin";
+        String password = "password";
+
+        ArrayList<Food> food = new ArrayList<>();
+
+        try {
+            // Load MySQL JDBC Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish Connection
+            try (Connection con = DriverManager.getConnection(url, user, password)) {
+                // Prepare Statement
+                try (PreparedStatement ps = con.prepareStatement("SELECT * FROM foodcart")) {
+                    // Execute Query
+                    try (ResultSet rs = ps.executeQuery()) {
+                        // Process ResultSet
+                        while (rs.next()) {
+                            int id = rs.getInt("id");
+                            String item = rs.getString("item");
+                            double price = rs.getDouble("price");
+                            Food f = new Food(id, item, price);
+                            System.out.println(f);
+                            food.add(f);
+                        }
+                    }
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            // Handle ClassNotFoundException
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQLException
+        }
+        return food;
+    }
+}
+
+
+
+index.jsp(View)
+---------------
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MENU</title>
+</head>
+<body>
+
+    <%-- Import necessary classes --%>
+    <%@ page import="java.util.List" %>
+    <%@ page import="com.wp.foodcart.Food" %>
+
+    <%-- Get the list of food items from the servlet --%>
+    <% List<Food> foodItems = (List<Food>) request.getAttribute("foodItems"); %>
+
+    <%-- Iterate over the list and display the items --%>
+    <% if (foodItems != null) { %>
+        <% for (Food item : foodItems) { %>
+            <p>ID: <%= item.getId() %></p>
+            <p>Item: <%= item.getItem() %></p>
+            <p>Price: <%= item.getPrice() %></p>
+            <hr>
+        <% } %>
+    <% } else { %>
+        <p>Food items coming soon</p>
+    <% } %>
+
+</body>
+</html>
+
+
+FoodCart.java(Controller)
+---------------------------
+package com.wp.foodcart;
+
+import java.io.IOException;
+import java.util.List;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+
+public class FoodCart extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//get the data from the database
+		List<Food> foodItems = FoodItemsDb.getFoodList();
+		request.setAttribute("foodItems", foodItems);
+		
+		//redirect to a different page(view)
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.forward(request, response);
+		
+	}
+
+}
+
+
