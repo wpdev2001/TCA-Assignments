@@ -1,5 +1,6 @@
 LEC-09 15/02/2024
 ------------------
 Assignment
-Student.csv to Student.ser(Serialization and Deserialization)
+Q1. Student.csv to Student.ser(Serialization and Deserialization)
+Q2. How we can give data of 50 Mb csv file to database by using threads?
 
