@@ -19,11 +19,19 @@ Persistance operations:
   Both methods works similar but the only difference is save() method returns the primary key value whereas persist() method doesn't return any value type.
 
 2. To update record in database
--- update()
+-- update() - UPDATE
+    Existing record will be updated based on <id> or primary key otherwise you will get an Exception
+
 -- saveOrUpdate()
+    --> Existing record : SELECT & INSERT SQL is fired
+    --> Non-Existing record : SELECT & INSERT SQL is fired &
+    --> No Exception is generated
 
 3.To delete record from database
--- delete()
+-- delete() 
+    --> Existing record : SELECT & DELETE SQL is fired
+    --> Non-Existing record : SELECT SQL is fired &
+    --> No Exception is generated
 
 4. To read/retrieve a record from database
 -- get()  --> SELECT
@@ -31,6 +39,9 @@ Persistance operations:
 
 In this lecture we are going to cover update record part.
 
+QUESTIONS:
+What are the fields that we can pass inside hbm2ddl field?
+What happens when we are using create property and in APP.java we use the update() method?
 
 ========================================================================================================================
 
