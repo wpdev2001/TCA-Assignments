@@ -9,6 +9,19 @@ Important steps in Hibernate:
 
 =====================================================================================================================
 
+LEC-19 06/03/2024
+------------------
+
+Use of class keyword: Whenever we make use of class keyword in the following way Student.class this indicates that all the data about the class is present within that following .class return type.
+i.e., Class c = Student.class; //In this case all the info related to student class ie, constructors, methods, data members even the parent class info is present withing the object of class 'c'.
+
+And this concept in java is known as reflection.
+
+Assignment:
+Can I access private data of a class using Reflection API?
+
+=====================================================================================================================
+
 LEC-18 05/03/2024
 ------------------
 
