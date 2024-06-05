@@ -1,3 +1,14 @@
+Important steps in Hibernate:
+-----------------------------
+1. Create an maven project 
+2. Import dependencies needed into POM.xml file.(Such as hibernate, postgresql,javassist,etc)
+3. Create the configuration file and mapping files under src/main/resources folder.
+4. Create POJO class inside src/main/java/package/entities/Student.java
+5. Create App.java inside src/main/java/package/App.java
+6. Run the Hibernate application.
+
+=====================================================================================================================
+
 LEC-18 05/03/2024
 ------------------
 
