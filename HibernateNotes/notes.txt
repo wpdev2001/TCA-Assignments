@@ -32,6 +32,12 @@ Persistance operations:
     --> Existing record : SELECT & DELETE SQL is fired
     --> Non-Existing record : SELECT SQL is fired &
     --> No Exception is generated
+    --> NOTE: 
+            Case 1: When we are using Wrapper types(Integer) inside POJO class
+                  --> In case of delete if don't specify the id attribute then its not going to generate the SELECT query as well as it doesn't throw any exception bcs the 'id' attribute value is null.
+
+            Case 2: When we are using primitive types(int) inside POJO class
+                  --> In case of delete if don't specify the id attribute then its going to generate the SELECT query as well as it doesn't throw any exception bcz the 'id' attribute value is 0(i.e., default value of int).
 
 4. To read/retrieve a record from database
 -- get()  --> SELECT
