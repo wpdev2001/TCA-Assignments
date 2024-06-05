@@ -1,3 +1,28 @@
+LEC-18 05/03/2024
+------------------
+
+Persistance operations:
+1. To insert or save an object into the database
+-- save() --> INSERT 
+-- persist() --> INSERT()
+  Both methods works similar but the only difference is save() method returns the primary key value whereas persist() method doesn't return any value type.
+
+2. To update record in database
+-- update()
+-- saveOrUpdate()
+
+3.To delete record from database
+-- delete()
+
+4. To read/retrieve a record from database
+-- get()  --> SELECT
+-- load() --> SELECT
+
+In this lecture we are going to cover update record part.
+
+
+========================================================================================================================
+
 LEC-09 15/02/2024
 ------------------
 Assignment
