@@ -9,6 +9,29 @@ Important steps in Hibernate:
 
 =====================================================================================================================
 
+LEC-20 07/03/2024
+------------------
+
+To read/retrieve/fetch a record from database and to store into the object in Java then there are two methods.
+-- get()  --> SELECT
+-- load() --> SELECT
+
+get():
+  -->if ID is present then it returns object otherwise it return null
+  EX:
+    Student ob = (Student) session.get(Student.class,101);  --> ob = DATA
+    Student ob = (Student) session.get(Student.class,103);  --> ob = null
+  -->get() does early loading or eager loading
+
+load():
+  -->If ID is present then it returns object otherwise it gives "ObjectNotFoundException" exception.
+  EX:
+    Student ob = (Student) session.load(Student.class,101);  --> ob = DATA
+    Student ob = (Student) session.load(Student.class,103);  --> ob = null
+
+  --> load() does late loading or lazy loading.
+=====================================================================================================================
+
 LEC-19 06/03/2024
 ------------------
 
