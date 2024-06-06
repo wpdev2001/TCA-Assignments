@@ -30,6 +30,11 @@ load():
     Student ob = (Student) session.load(Student.class,103);  --> ob = null
 
   --> load() does late loading or lazy loading.
+
+NOTE: After calling get or load method hibernate internally calls the setters in order to set those values to data members and after calling the setter we can easily get that value.
+What is the proof?
+--> write println statement inside any setter and run this application.
+Student ob = (Student) session.get(Student.class,101);
 =====================================================================================================================
 
 LEC-19 06/03/2024
