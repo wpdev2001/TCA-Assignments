@@ -35,6 +35,15 @@ NOTE: After calling get or load method hibernate internally calls the setters in
 What is the proof?
 --> write println statement inside any setter and run this application.
 Student ob = (Student) session.get(Student.class,101);
+
+Story of load method:
+This methods returns the object if found for particular record else it throws an exception and it follows lazy loading
+The reason why we need to handle the exception
+		
+
+Story of get method:
+This methods returns the object if found for particular record else it returns null
+The reason why we don't need to handle the exception
 =====================================================================================================================
 
 LEC-19 06/03/2024
