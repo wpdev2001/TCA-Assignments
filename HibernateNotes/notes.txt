@@ -13,7 +13,7 @@ LEC-21 12/03/2024
 ------------------
 
 Mapping file is not mandatory instead we can make use of annotations.
-The annotations which we are going to use is present inside 'javax.persistent' package.
+The annotations which we are going to use is present inside 'javax.persistence' package.
 
 
 =====================================================================================================================
