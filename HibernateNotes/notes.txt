@@ -9,12 +9,41 @@ Important steps in Hibernate:
 
 =====================================================================================================================
 
+LEC-22 13/03/2024
+------------------
+
+Mapping details:
+-- Student.hbm.xml
+-- Annotations
+
+Configuration Details:
+1. Declarative approach
+  -- Hibernate.cfg.xml
+  -- Properties file
+
+2. Programmatic Approach
+  -- Java code
+
+=====================================================================================================================
+
+
 LEC-21 12/03/2024
 ------------------
 
 Mapping file is not mandatory instead we can make use of annotations.
 The annotations which we are going to use is present inside 'javax.persistence' package.
 
+--> Annotations to write Entity class
+  -- @Entity
+  -- @Table
+  -- @Id
+  -- @Column
+--> How to register your entity class with Hibernate
+  -- using tag <mapping class = "com.tca.entities.Student"/> inside hibernate.cfg.mml
+  -- by calling addAnnotedClass() using Configuration object.
+
+QUESTION:
+Why Hibernate has given two ways for defining mapping file?
 
 =====================================================================================================================
 
