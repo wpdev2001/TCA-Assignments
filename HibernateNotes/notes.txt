@@ -21,9 +21,22 @@ Configuration Details:
   -- Hibernate.cfg.xml
   -- Properties file
 
+Properties file:
+----------------
+hibernate.properties is created under the resource folder
+NO need of configure() method bcz by default when the configuration constructor is called it will search for hibernate.properties file
+
+If we don't have the configuration file also we don't use annotation for POJO class:
+  a. How to give mapping file details?
+  --> it has given particular method : configuration.addResource("Student.hbm.xml");
+
+
 2. Programmatic Approach
   -- Java code
 
+QUESTIONS:
+Earlier we used to give those details within configuration file. So, can't we pass those details within hibernate.properties file?
+--> according to the explaination, if we don't have the configuration file, hibernate has given a provision to get the entity/POJO class through configuration.addAnnotated(Student.class) method.
 =====================================================================================================================
 
 
