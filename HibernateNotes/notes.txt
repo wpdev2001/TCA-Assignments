@@ -30,6 +30,8 @@ If we don't have the configuration file also we don't use annotation for POJO cl
   a. How to give mapping file details?
   --> it has given particular method : configuration.addResource("Student.hbm.xml");
 
+What if we create the properties file with a different name as myconfig.properties?
+--> In this case we need to create the Properties object and pass that object to configuration.setProperties() method.
 
 2. Programmatic Approach
   -- Java code
