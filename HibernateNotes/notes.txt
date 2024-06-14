@@ -20,6 +20,8 @@ Configuration Details:
 1. Declarative approach
   -- Hibernate.cfg.xml
   -- Properties file
+    A] By default property file : hibernate.properties
+    B] User Defined Properties File : myconfig.properties
 
 Properties file:
 ----------------
