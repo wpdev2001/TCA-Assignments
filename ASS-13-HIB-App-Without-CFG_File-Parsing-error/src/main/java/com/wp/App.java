@@ -13,7 +13,11 @@ public class App
     public static void main( String[] args )
     {
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate.properties");
+        //NO need of configure method bcz by default when the configuration constructor is called it will search for hibernate.properties file
+        
+        //Giving the mapping file details
+        //Earlier we used to give those details within configuration file. So, can't we pass those details within hibernate.properties file?
+        configuration.addAnnotatedClass(Student.class);
         
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         
