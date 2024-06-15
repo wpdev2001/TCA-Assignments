@@ -1,0 +1,168 @@
+Important steps in Hibernate:
+-----------------------------
+1. Create an maven project 
+2. Import dependencies needed into POM.xml file.(Such as hibernate, postgresql,javassist,etc)
+3. Create the configuration file and mapping files under src/main/resources folder.
+4. Create POJO class inside src/main/java/package/entities/Student.java
+5. Create App.java inside src/main/java/package/App.java
+6. Run the Hibernate application.
+
+=====================================================================================================================
+
+LEC-22 13/03/2024
+------------------
+
+Mapping details:
+-- Student.hbm.xml
+-- Annotations
+
+Configuration Details:
+1. Declarative approach
+  -- Hibernate.cfg.xml
+  -- Properties file
+    A] By default property file : hibernate.properties
+    B] User Defined Properties File : myconfig.properties
+
+Properties file:
+----------------
+hibernate.properties is created under the resource folder
+NO need of configure() method bcz by default when the configuration constructor is called it will search for hibernate.properties file
+
+If we don't have the configuration file also we don't use annotation for POJO class:
+  a. How to give mapping file details?
+  --> it has given particular method : configuration.addResource("Student.hbm.xml");
+
+What if we create the properties file with a different name as myconfig.properties?
+--> In this case we need to create the Properties object and pass that object to configuration.setProperties() method.
+
+2. Programmatic Approach
+  -- Java code
+
+QUESTIONS:
+Earlier we used to give those details within configuration file. So, can't we pass those details within hibernate.properties file?
+--> according to the explaination, if we don't have the configuration file, hibernate has given a provision to get the entity/POJO class through configuration.addAnnotated(Student.class) method.
+=====================================================================================================================
+
+
+LEC-21 12/03/2024
+------------------
+
+Mapping file is not mandatory instead we can make use of annotations.
+The annotations which we are going to use is present inside 'javax.persistence' package.
+
+--> Annotations to write Entity class
+  -- @Entity
+  -- @Table
+  -- @Id
+  -- @Column
+--> How to register your entity class with Hibernate
+  -- using tag <mapping class = "com.tca.entities.Student"/> inside hibernate.cfg.mml
+  -- by calling addAnnotedClass() using Configuration object.
+
+QUESTION:
+Why Hibernate has given two ways for defining mapping file?
+
+=====================================================================================================================
+
+LEC-20 07/03/2024
+------------------
+
+To read/retrieve/fetch a record from database and to store into the object in Java then there are two methods.
+-- get()  --> SELECT
+-- load() --> SELECT
+
+get():
+  -->if ID is present then it returns object otherwise it return null
+  EX:
+    Student ob = (Student) session.get(Student.class,101);  --> ob = DATA
+    Student ob = (Student) session.get(Student.class,103);  --> ob = null
+  -->get() does early loading or eager loading
+
+load():
+  -->If ID is present then it returns object otherwise it gives "ObjectNotFoundException" exception.
+  EX:
+    Student ob = (Student) session.load(Student.class,101);  --> ob = DATA
+    Student ob = (Student) session.load(Student.class,103);  --> ob = null
+
+  --> load() does late loading or lazy loading.
+
+NOTE: After calling get or load method hibernate internally calls the setters in order to set those values to data members and after calling the setter we can easily get that value.
+What is the proof?
+--> write println statement inside any setter and run this application.
+Student ob = (Student) session.get(Student.class,101);
+
+Story of load method:
+This methods returns the object if found for particular record else it throws an exception and it follows lazy loading
+The reason why we need to handle the exception	
+Whenever we try to get non-id parameter value using getter at that moment the load method does the communication with the database until that it doesn't form any connection with the database...The reason why it does lazy loading.
+Due to which application performance will also improve.
+
+Story of get method:
+This methods returns the object if found for particular record else it returns null
+The reason why we don't need to handle the exception
+
+=====================================================================================================================
+
+LEC-19 06/03/2024
+------------------
+
+Use of class keyword: Whenever we make use of class keyword in the following way Student.class this indicates that all the data about the class is present within that following .class return type.
+i.e., Class c = Student.class; //In this case all the info related to student class ie, constructors, methods, data members even the parent class info is present withing the object of class 'c'.
+
+And this concept in java is known as reflection.
+
+Assignment:
+Can I access private data of a class using Reflection API?
+
+=====================================================================================================================
+
+LEC-18 05/03/2024
+------------------
+
+Persistance operations:
+1. To insert or save an object into the database
+-- save() --> INSERT 
+-- persist() --> INSERT()
+  Both methods works similar but the only difference is save() method returns the primary key value whereas persist() method doesn't return any value type.
+
+2. To update record in database
+-- update() - UPDATE
+    Existing record will be updated based on <id> or primary key otherwise you will get an Exception
+
+-- saveOrUpdate()
+    --> Existing record : SELECT & INSERT SQL is fired
+    --> Non-Existing record : SELECT & INSERT SQL is fired &
+    --> No Exception is generated
+
+3.To delete record from database
+-- delete() 
+    --> Existing record : SELECT & DELETE SQL is fired
+    --> Non-Existing record : SELECT SQL is fired &
+    --> No Exception is generated
+    --> NOTE: 
+            Case 1: When we are using Wrapper types(Integer) inside POJO class
+                  --> In case of delete if don't specify the id attribute then its not going to generate the SELECT query as well as it doesn't throw any exception bcs the 'id' attribute value is null.
+
+            Case 2: When we are using primitive types(int) inside POJO class
+                  --> In case of delete if don't specify the id attribute then its going to generate the SELECT query as well as it doesn't throw any exception bcz the 'id' attribute value is 0(i.e., default value of int).
+
+4. To read/retrieve a record from database
+-- get()  --> SELECT
+-- load() --> SELECT
+
+In this lecture we are going to cover update record part.
+
+QUESTIONS:
+What are the fields that we can pass inside hbm2ddl field?
+What happens when we are using create property and in APP.java we use the update() method?
+
+========================================================================================================================
+
+LEC-09 15/02/2024
+------------------
+Assignment
+Q1. Student.csv to Student.ser(Serialization and Deserialization)
+  Serialization code
+  Deserialization code
+Q2. How we can give data of 50 Mb csv file to database by using threads?
+
