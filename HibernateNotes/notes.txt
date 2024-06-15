@@ -9,6 +9,18 @@ Important steps in Hibernate:
 
 =====================================================================================================================
 
+PENDING TASKS:
+--------------
+Assignments:
+Reflection API
+Programmatic approach
+Suppose If i give Dhane then i should get fname related to lname = Dhane
+Both fname, and lname are Composite key values
+
+@Column properties of javax.persistence.Column package?
+
+=====================================================================================================================
+
 LEC-22 13/03/2024
 ------------------
 
