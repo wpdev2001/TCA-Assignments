@@ -21,10 +21,19 @@ Both fname, and lname are Composite key values
 
 =====================================================================================================================
 
+LEC-26 20/03/2024
+=================
+1. GeneratorType.AUTO
+2. GeneratorType.IDENTITY
+3. GeneratorType.SEQUENCE
+4. GeneratorType.TABLE
+
+=====================================================================================================================
+
 LEC-25 20/03/2024
 =================
 
-Primary key Generation
+Primary key Generation (To understand it better make sure u have the already created table and create property disabled within configuration file)
 ----------------------
 Types to do AUTO INCREMENT Using Hibernate:
 1. AUTO : In case of auto we make Hibenate to decide the underlying database used(it can be Postgresql or MySQL).
