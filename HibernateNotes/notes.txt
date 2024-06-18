@@ -44,6 +44,14 @@ INSERT INTO Student(name,per) VALUES('AAA',70);
 INSERT INTO Student(name,per) VALUES('BBB',80);
 INSERT INTO Student(name,per) VALUES('CCC',90);
 
+mysql> desc Student;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| rno   | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | YES  |     | NULL    |                |
+| per   | float       | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
 
 ==========
 PostgreSQL
