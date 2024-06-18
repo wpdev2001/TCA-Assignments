@@ -21,6 +21,76 @@ Both fname, and lname are Composite key values
 
 =====================================================================================================================
 
+LEC-25 20/03/2024
+=================
+
+Primary key Generation
+----------------------
+Types to do AUTO INCREMENT Using Hibernate:
+1. AUTO : In case of auto we make Hibenate decided the underlying database used(it can be Postgresql or MySQL).
+2. IDENTITY : It can be used for both MySQL and Postgresql
+In case of Postgresql it internally calls the Serial method.
+3. SEQUENCE : It is only used in case of Postgresql
+4. TABLE: It supports all who doesn't have AUTO_INCREMENT or SERIAL keywords, for those databases hibernate says you can implement AUTO INCREMENT using 
+@GeneratedValue(strategy = GenerationType.TABLE) annotation
+
+======
+MySQL
+======
+
+CREATE TABLE Student(rno int primary key AUTO_INCREMENT, name varchar(20),per float);
+
+INSERT INTO Student(name,per) VALUES('AAA',70);
+INSERT INTO Student(name,per) VALUES('BBB',80);
+INSERT INTO Student(name,per) VALUES('CCC',90);
+
+
+==========
+PostgreSQL
+==========
+
+-------------
+Variant -1 : In-built sequence i.e. serial
+-------------
+
+//In postgresql the serial keyword contains the type int as well it specifies it a primary key by default.
+
+CREATE TABLE Student(rno serial, name varchar(20),per float);
+
+INSERT INTO Student(name,per) VALUES('AAA',70);
+INSERT INTO Student(name,per) VALUES('BBB',80);
+INSERT INTO Student(name,per) VALUES('CCC',90);
+
+                                    Table "public.student"
+ Column |         Type          | Collation | Nullable |               Default                
+--------+-----------------------+-----------+----------+--------------------------------------
+ rno    | integer               |           | not null | nextval('student_rno_seq'::regclass) 
+ name   | character varying(20) |           |          | 
+ per    | double precision      |           |          | 
+
+(END)
+
+NOTE: We can able to create our own sequence in Postgresql whereas in MySQL we cannot create our own sequence. 
+
+-------------
+Variant -2 : User defined sequence..
+-------------
+
+How can I able to create my own sequence?
+==>
+CREATE SEQUENCE wp_seq START 101;
+
+CREATE TABLE Student(rno int PRIMARY KEY DEFAULT nextval('wp_seq'), name varchar(20),per float);
+
+INSERT INTO Student(name,per) VALUES('AAA',70);
+INSERT INTO Student(name,per) VALUES('BBB',80);
+INSERT INTO Student(name,per) VALUES('CCC',90);
+
+How to check which is the next val of the sequence?
+==> select nextval('wp_seq');
+
+=====================================================================================================================
+
 LEC-22 13/03/2024
 ------------------
 
