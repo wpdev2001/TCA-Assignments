@@ -23,10 +23,10 @@ Both fname, and lname are Composite key values
 
 LEC-26 20/03/2024
 =================
-1. GeneratorType.AUTO
-2. GeneratorType.IDENTITY
-3. GeneratorType.SEQUENCE
-4. GeneratorType.TABLE
+1. GenerationType.AUTO
+2. GenerationType.IDENTITY
+3. GenerationType.SEQUENCE
+4. GenerationType.TABLE
 
 =====================================================================================================================
 
