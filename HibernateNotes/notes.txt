@@ -18,6 +18,7 @@ Suppose If i give Dhane then i should get fname related to lname = Dhane
 Both fname, and lname are Composite key values
 
 @Column properties of javax.persistence.Column package?
+Use of Transient and what is the difference between core java's transient and hibernate's transient?
 
 =====================================================================================================================
 
