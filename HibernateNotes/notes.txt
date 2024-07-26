@@ -38,6 +38,7 @@ Primary key Generation (To understand it better make sure u have the already cre
 ----------------------
 Types to do AUTO INCREMENT Using Hibernate:
 1. AUTO : In case of auto we make Hibenate to decide the underlying database used(it can be Postgresql or MySQL).
+-- In case of using AUTO it will get replaced by either IDENTITY or SEQUENCE based on the underlying DB.
 2. IDENTITY : It can be used for both MySQL and Postgresql
 In case of Postgresql it internally calls the Serial method.
 3. SEQUENCE : It is only used in case of Postgresql
