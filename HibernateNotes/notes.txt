@@ -22,6 +22,59 @@ Use of Transient and what is the difference between core java's transient and hi
 
 =====================================================================================================================
 
+LEC - 27 
+================
+
+Creating Hibernate applications using different versions
+
+Version 4:
+Creating an Hibernate application using this version requires updating the pom.xml file and creating an sessionFactory object in different manner:
+      Configuration configuration = new Configuration();
+    	configuration.configure();
+    	
+    	Properties prop = configuration.getProperties();
+    	
+    	StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+    	
+    	builder.applySettings(prop);
+    	StandardServiceRegistry registry = builder.build();
+    	
+    	SessionFactory sessionFactory = configuration.buildSessionFactory(registry);
+    	
+      Session session = sessionFactory.openSession();
+
+Version 5:
+Creating an Hibernate application using this version requires 
+1. updating the pom.xml file by adding 3 more dependencies:
+    <dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+2. Adding the following path to the VM arguments section:
+  --add-opens java.base/java.lang=ALL-UNNAMED
+
+
+Version 6:
+Creating an Hibernate application using this version requires 
+1. updating the pom.xml through version 6 in normal way and here we don't need any additional dependencies.
+2. In case of version 6 we require jdk version to be atleast 17 or more than it 
+3. All the hibernate pakages is provided by Jakarta package. (Earlier it was provided by javax)
+4. updating the Dialect class inside configuration file
+
+=====================================================================================================================
+
 LEC-26 20/03/2024
 =================
 1. GenerationType.AUTO
