@@ -1,0 +1,12 @@
+create table foodcart(id int primary key,item varchar(20),price double);
+
+INSERT INTO foodcart (id, item, price) VALUES
+(1, 'Burger', 5.99),
+(2, 'Pizza', 8.49),
+(3, 'Salad', 6.99),
+(4, 'Pasta', 9.99),
+(5, 'Sandwich', 4.99);
+
+INSERT INTO foodcart (id, item, price) VALUES (6, 'Vadapav', 10.00);
+
+select * from foodcart;
