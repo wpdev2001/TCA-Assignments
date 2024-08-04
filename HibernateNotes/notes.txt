@@ -22,6 +22,26 @@ Use of Transient and what is the difference between core java's transient and hi
 
 =====================================================================================================================
 
+LEC - 28 2024/03/27
+===================
+
+Problem statement:
+Sir in Version 6 of Hibernate app, you said that the save method is depricated and instead of save we should use the persist method
+but the persist method returns void. So in case where I want to show user that its record is save with particular ID. So how we gonna show that to the user if we are using auto increment for primary key generation?
+
+In that case we can use getIdentifier() method which can be created through session object
+--> int id = (int) session.getIdentifier(sob);
+
+What is a Transaction?
+--> Transaction is a logical unit of work made up of one or more database operations like select, insert, delete, update.
+
+Properties of Transation:
+-------------------------
+A - Atomicity
+C - consistency
+I - Isolation
+D - Durability
+
 LEC - 27 
 ================
 
