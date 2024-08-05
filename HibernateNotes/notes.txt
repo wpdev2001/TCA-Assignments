@@ -20,6 +20,7 @@ Both fname, and lname are Composite key values
 @Column properties of javax.persistence.Column package?
 Use of Transient and what is the difference between core java's transient and hibernate's transient?
 
+CREATE TABLE account(accno int primary key, accholdername varchar(20), acctype varchar(10),balance double CHECK(balance>0));
 =====================================================================================================================
 
 LEC - 28 2024/03/27
