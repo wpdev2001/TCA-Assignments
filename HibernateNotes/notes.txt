@@ -23,6 +23,24 @@ Use of Transient and what is the difference between core java's transient and hi
 CREATE TABLE account(accno int primary key, accholdername varchar(20), acctype varchar(10),balance double CHECK(balance>0));
 =====================================================================================================================
 
+LEC - 31 2024/04/03
+===================
+
+What are the methods which we have used till now?
+--> save(), persist(), delete(), update(), saveOrUpdate(), get(), load()
+--> The above methods allow us to deal with one object only / one record at a time.
+
+But what if I want to process multiple records at a time?
+--> 
+1. HQL
+2. Native SQL
+3. Criteria API
+
+In case of HQL we define our own specific queries according to our need.
+NOTE: In HQL query we specify the class and its data members in the query.
+for ex: SELECT rno,name,per,city FROM Student;
+Here rno, name, & per are the data members name of Student class.
+
 LEC - 28 2024/03/27
 ===================
 
