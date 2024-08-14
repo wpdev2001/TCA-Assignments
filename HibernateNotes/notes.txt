@@ -40,6 +40,7 @@ In case of HQL we define our own specific queries according to our need.
 NOTE: In HQL query we specify the class and its data members in the query.
 for ex: SELECT rno,name,per,city FROM Student;
 Here rno, name, & per are the data members name of Student class.
+Topics covered : GroupBy and having queries, Where queries, etc.
 
 LEC - 28 2024/03/27
 ===================
