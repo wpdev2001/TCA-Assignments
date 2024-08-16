@@ -23,6 +23,17 @@ Use of Transient and what is the difference between core java's transient and hi
 CREATE TABLE account(accno int primary key, accholdername varchar(20), acctype varchar(10),balance double CHECK(balance>0));
 =====================================================================================================================
 
+LEC - 32 2024/04/04
+===================
+Does interface contains default and static method?
+Why interface allows non abstract method?
+And why one method is declared static and one as default?
+
+Interface has only abstract methods? --> WRONG
+--> It also has default and static method...Surf on internet why does it has been allowed to declare methods as default and static?
+
+
+
 LEC - 31 2024/04/03
 ===================
 
