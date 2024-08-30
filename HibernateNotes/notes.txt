@@ -122,7 +122,7 @@ In order to update VM arguments, the process in eclipse and intelliJ is somewhat
 	B] IntelliJ Process:
 		i) Right click on App.java
 		ii) Go to more Run/Debug --> Modify Run configurations --> Select modify options --> Check the 'Add VM options' option
-		iii) Add "--add-opens java.base/java.lang=ALL-UNNAMED " environment inside the environment and rerun the application.
+		iii) Add "--add-opens java.base/java.lang=ALL-UNNAMED " environment inside "VM options" and rerun the application.
 
 
 Version 6:
