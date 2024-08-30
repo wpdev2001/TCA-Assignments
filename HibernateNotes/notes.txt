@@ -116,6 +116,14 @@ Creating an Hibernate application using this version requires
 2. Adding the following path to the VM arguments section:
   --add-opens java.base/java.lang=ALL-UNNAMED
 
+In order to update VM arguments, the process in eclipse and intelliJ is somewhat different
+
+	A] Eclipse Process: <TODO>
+	B] IntelliJ Process:
+		i) Right click on App.java
+		ii) Go to more Run/Debug --> Modify Run configurations --> Select modify options --> Check the 'Add VM options' option
+		iii) Add "--add-opens java.base/java.lang=ALL-UNNAMED " environment inside the environment and rerun the application.
+
 
 Version 6:
 Creating an Hibernate application using this version requires 
